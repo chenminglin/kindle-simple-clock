@@ -82,9 +82,18 @@
 
   function normalizeConfig(cfg) {
     var c = cfg || {};
+    function normalizeHost(host) {
+      if (!host) return "";
+      var h = ("" + host).trim();
+      if (!h) return "";
+      if (h.indexOf("http://") === 0 || h.indexOf("https://") === 0) {
+        return h.replace(/\/+$/, "");
+      }
+      return ("https://" + h).replace(/\/+$/, "");
+    }
     return {
       API_KEY: c.API_KEY || c.apiKey || DEFAULT_CONFIG.API_KEY,
-      API_HOST: c.API_HOST || c.apiHost || DEFAULT_CONFIG.API_HOST,
+      API_HOST: normalizeHost(c.API_HOST || c.apiHost || DEFAULT_CONFIG.API_HOST),
       CITY_QUERY: c.CITY_QUERY || c.cityQuery || DEFAULT_CONFIG.CITY_QUERY,
       DISPLAY_CITY: c.DISPLAY_CITY || c.displayCity || DEFAULT_CONFIG.DISPLAY_CITY
     };

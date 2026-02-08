@@ -9,7 +9,7 @@
 1. 本地/静态配置（最简单）
 把 `config.example.js` 复制为 `config.js`，填写以下字段：
 - `API_KEY`：和风天气 API Key
-- `API_HOST`：你的专属 API Host（形如 `https://xxxxxx.qweatherapi.com`）
+- `API_HOST`：你的专属 API Host（形如 `https://xxxxxx.qweatherapi.com`，不带协议也会自动补全）
 - `CITY_QUERY`：城市查询关键词（如 `深圳`）
 - `DISPLAY_CITY`：页面显示的城市名（可选，不填则使用接口返回的名称）
 
@@ -17,7 +17,7 @@
 如果不想在仓库里放 Key，可以在 Vercel 里设置环境变量，页面会自动请求 `/api/config` 获取配置。
 环境变量名称：
 - `QWEATHER_API_KEY`
-- `QWEATHER_API_HOST`
+- `QWEATHER_API_HOST`（可填完整 `https://` 或只填域名，都会自动补全）
 - `QWEATHER_CITY_QUERY`
 - `QWEATHER_DISPLAY_CITY`
 
