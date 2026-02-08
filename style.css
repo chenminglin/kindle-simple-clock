@@ -1,0 +1,274 @@
+@font-face {
+  font-family: "XiaoXiongRuanTangWeiWeiTianZiTi";
+  src: url("xiaoxiongruantangweiweitianziti.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: "XiaoXiongRuanTangWeiWeiTianZiTi", "Georgia", "Times New Roman", serif;
+  overflow: hidden;
+  font-weight: bold;
+}
+
+body.theme-dark {
+  background: #000;
+  color: #fff;
+}
+
+body.theme-light {
+  background: #fff;
+  color: #000;
+}
+
+#settings_button {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  font-size: 20px;
+  padding: 6px 10px;
+  border: 1px solid currentColor;
+  background: transparent;
+  color: inherit;
+  z-index: 10;
+  display: none;
+}
+
+#settings_dialog {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+}
+
+#settings_backdrop {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+#settings_card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 80%;
+  max-width: 520px;
+  transform: translate(-50%, -50%);
+  border: 1px solid #666;
+  padding: 16px;
+}
+
+body.theme-dark #settings_card {
+  background: #000;
+  color: #fff;
+  border-color: #666;
+}
+
+body.theme-light #settings_card {
+  background: #fff;
+  color: #000;
+  border-color: #999;
+}
+
+.settings_title {
+  font-size: 28px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.settings_row {
+  margin: 10px 0;
+  text-align: left;
+  font-size: 22px;
+}
+
+.settings_label {
+  display: inline-block;
+  width: 100px;
+}
+
+#theme_select,
+#days_select,
+#settings_save,
+#settings_close {
+  font-size: 22px;
+  padding: 6px 10px;
+  border: 1px solid currentColor;
+  background: transparent;
+  color: inherit;
+}
+
+body.theme-dark #theme_select,
+body.theme-dark #days_select {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+body.theme-light #theme_select,
+body.theme-light #days_select {
+  background: #fff;
+  color: #000;
+  border-color: #000;
+}
+
+#theme_select option,
+#days_select option {
+  color: #000;
+  background: #fff;
+}
+
+.settings_actions {
+  text-align: center;
+  margin-top: 12px;
+}
+
+.settings_actions button {
+  margin: 0 8px;
+}
+
+#page {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+#content {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+}
+
+#time_block {
+  width: 100%;
+  height: 33vh;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#time {
+  font-size: 290px;
+  font-size: 28vh;
+  line-height: 1;
+  letter-spacing: 2px;
+}
+
+#date_row {
+  font-size: 56px;
+  margin-top: 8px;
+}
+
+#date_row span {
+  display: inline-block;
+  margin: 0 6px;
+}
+
+#weather {
+  margin-top: 8px;
+}
+
+#weather_line {
+  font-size: 36px;
+}
+
+#weather_icon {
+  display: inline-block;
+  font-size: 30px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+#weather_desc,
+#weather_temp,
+#weather_extra {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#weather_desc {
+  margin-right: 10px;
+}
+
+#weather_temp {
+  margin-right: 10px;
+}
+
+#weather_extra {
+  font-size: 36px;
+}
+
+#forecast {
+  width: 100%;
+  margin-top: 14px;
+}
+
+#forecast_table {
+  width: 100%;
+}
+
+#forecast_table td {
+  font-size: 28px;
+  padding: 2px 0;
+  vertical-align: top;
+}
+
+#forecast_table .f_col {
+  width: 50%;
+}
+
+#forecast_table .f_sep {
+  width: 2%;
+  text-align: center;
+}
+
+#forecast_table .f_sep_line {
+  display: inline-block;
+  width: 2px;
+  height: 48px;
+  background: currentColor;
+}
+
+#forecast_table .f_item {
+  width: 100%;
+}
+
+#forecast_table .f_date {
+  text-align: left;
+  width: 18%;
+}
+
+#forecast_table .f_text {
+  text-align: left;
+  width: 40%;
+}
+
+#forecast_table .f_temp {
+  text-align: left;
+  width: 42%;
+}
+
+#forecast_table .f_icon {
+  display: inline-block;
+  font-size: 22px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+#forecast_table .f_text_label {
+  display: inline-block;
+  vertical-align: middle;
+}

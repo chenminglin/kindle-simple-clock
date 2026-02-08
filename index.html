@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Kindle Clock</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/qweather-icons@1.1.1/font/qweather-icons.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <button id="settings_button">设置</button>
+  <div id="settings_dialog">
+    <div id="settings_backdrop"></div>
+    <div id="settings_card">
+      <div class="settings_title">设置</div>
+      <div class="settings_row">
+        <span class="settings_label">样式</span>
+        <select id="theme_select">
+          <option value="dark">黑底白字</option>
+          <option value="light">白底黑字</option>
+        </select>
+      </div>
+      <div class="settings_row">
+        <span class="settings_label">预报天数</span>
+        <select id="days_select">
+          <option value="1">1天</option>
+          <option value="2">2天</option>
+          <option value="3">3天</option>
+          <option value="4">4天</option>
+          <option value="5">5天</option>
+          <option value="6">6天</option>
+          <option value="7">7天</option>
+        </select>
+      </div>
+      <div class="settings_actions">
+        <button id="settings_save">保存</button>
+        <button id="settings_close">关闭</button>
+      </div>
+    </div>
+  </div>
+  <div id="page">
+    <div id="content">
+      <div id="time_block">
+        <div id="time">--:--</div>
+        <div id="date_row">
+          <span id="date_text">日期加载中...</span>
+          <span id="city_text">城市查询中...</span>
+        </div>
+      </div>
+      <div id="weather">
+        <div id="weather_line">
+          <span id="weather_icon"></span>
+          <span id="weather_desc">天气加载中...</span>
+          <span id="weather_temp">--</span>
+          <span id="weather_extra">--</span>
+        </div>
+      </div>
+      <div id="forecast">
+        <table id="forecast_table">
+          <tbody id="forecast_body">
+            <tr><td colspan="3">预报加载中...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <script src="config.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
