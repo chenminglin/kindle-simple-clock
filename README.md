@@ -45,3 +45,15 @@ python3 -m http.server 8080
 
 - 页面会调用城市搜索接口获取 `LocationID`，再请求天气。
 - 预报天数可在设置页调整（1-7 天）。
+
+## 部署到 Netlify
+
+1. 连接 GitHub 仓库并部署。
+2. 在 Netlify 环境变量里设置：
+   - `QWEATHER_API_KEY`
+   - `QWEATHER_API_HOST`
+   - `QWEATHER_CITY_QUERY`
+   - `QWEATHER_DISPLAY_CITY`
+3. 重新部署。
+
+说明：项目已包含 Netlify Functions（`netlify/functions/config.js`）和重定向规则（`netlify.toml`），页面仍访问 `/api/config`，Netlify 会自动转发到 `/.netlify/functions/config`。
