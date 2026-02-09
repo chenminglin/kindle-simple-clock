@@ -15,8 +15,9 @@
   var IP_API = "https://ipapi.co/json?languages=zh-CN";
   var GEO_RANGE = "cn";
   var GEO_PATH = "/geo/v2/city/lookup";
-  var DAILY_PATH = "/v7/weather/7d";
-  var FORECAST_DAYS = 7;
+  var DAILY_PATH_7 = "/v7/weather/7d";
+  var DAILY_PATH_10 = "/v7/weather/10d";
+  var FORECAST_DAYS = 8;
   var QWEATHER_JWT = ""; // optional, if you use JWT auth
   var LOCATION_ID = null;
   var CITY_DISPLAY = CITY_QUERY;
@@ -25,7 +26,7 @@
   var WEATHER_INTERVAL = 20 * 60 * 1000;
   var timezoneOffsetMinutes = null;
   var DEFAULT_THEME = "dark";
-  var DEFAULT_FORECAST_DAYS = 3;
+  var DEFAULT_FORECAST_DAYS = 8;
   var currentTheme = DEFAULT_THEME;
   var forecastDays = DEFAULT_FORECAST_DAYS;
   var settingsBtn = null;
@@ -60,7 +61,7 @@
     var n = parseInt(val, 10);
     if (isNaN(n)) return DEFAULT_FORECAST_DAYS;
     if (n < 1) n = 1;
-    if (n > 7) n = 7;
+    if (n > 8) n = 8;
     return n;
   }
 
@@ -238,7 +239,8 @@
   }
 
   function buildDailyUrl() {
-    var url = API_HOST + DAILY_PATH +
+    var dailyPath = forecastDays > 7 ? DAILY_PATH_10 : DAILY_PATH_7;
+    var url = API_HOST + dailyPath +
       "?location=" + encodeURIComponent(LOCATION_ID) +
       "&lang=" + encodeURIComponent(LANG) +
       "&unit=" + encodeURIComponent(UNIT);
@@ -330,9 +332,25 @@
     if (temp) {
       temp.innerHTML = "";
     }
-    var extra = document.getElementById("weather_extra");
-    if (extra) {
-      extra.innerHTML = "";
+    var feels = document.getElementById("weather_feels");
+    if (feels) {
+      feels.innerHTML = "";
+    }
+    var humidity = document.getElementById("weather_humidity");
+    if (humidity) {
+      humidity.innerHTML = "";
+    }
+    var wind = document.getElementById("weather_wind");
+    if (wind) {
+      wind.innerHTML = "";
+    }
+    var precip = document.getElementById("weather_precip");
+    if (precip) {
+      precip.innerHTML = "";
+    }
+    var cloud = document.getElementById("weather_cloud");
+    if (cloud) {
+      cloud.innerHTML = "";
     }
     var iconEl = document.getElementById("weather_icon");
     if (iconEl) {
@@ -398,9 +416,37 @@
       if (temp) {
         temp.innerHTML = now.temp + "℃";
       }
-      var extra = document.getElementById("weather_extra");
-      if (extra) {
-        extra.innerHTML = "湿度 " + now.humidity + "% | 风 " + now.windDir + " " + now.windScale + "级";
+      var feels = document.getElementById("weather_feels");
+      if (feels) {
+        if (now.feelsLike !== undefined && now.feelsLike !== null && now.feelsLike !== "") {
+          feels.innerHTML = "体感 " + now.feelsLike + "℃";
+        } else {
+          feels.innerHTML = "";
+        }
+      }
+      var humidity = document.getElementById("weather_humidity");
+      if (humidity) {
+        humidity.innerHTML = "湿度 " + now.humidity + "%";
+      }
+      var wind = document.getElementById("weather_wind");
+      if (wind) {
+        wind.innerHTML = "风 " + now.windDir + " " + now.windScale + "级";
+      }
+      var precip = document.getElementById("weather_precip");
+      if (precip) {
+        if (now.precip !== undefined && now.precip !== null && now.precip !== "") {
+          precip.innerHTML = "降水 " + now.precip + "mm";
+        } else {
+          precip.innerHTML = "";
+        }
+      }
+      var cloud = document.getElementById("weather_cloud");
+      if (cloud) {
+        if (now.cloud !== undefined && now.cloud !== null && now.cloud !== "") {
+          cloud.innerHTML = "云量 " + now.cloud + "%";
+        } else {
+          cloud.innerHTML = "";
+        }
       }
     };
     xhr.send(null);
